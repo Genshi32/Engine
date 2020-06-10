@@ -18,6 +18,7 @@ class CreateUserInfoesTable extends Migration
             $table->string('name');
             $table->string('icon_image');
             $table->string('description');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

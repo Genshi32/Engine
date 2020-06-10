@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserTechRelateTable extends Migration
+class CreateCategoryMastersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateUserTechRelateTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_tech_relate', function (Blueprint $table) {
+        Schema::create('category_masters', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_info_id');
-            $table->integer('technology_master_id');
+            $table->string('code');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateUserTechRelateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_tech_relate');
+        Schema::dropIfExists('category_masters');
     }
 }
