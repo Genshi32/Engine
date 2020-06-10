@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('top');
 });
+
+// MyPageを表示
+Route::get('/mypage', 'UserInfoController@mypage');
+Route::get('/edit', 'UserInfoController@edit');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
