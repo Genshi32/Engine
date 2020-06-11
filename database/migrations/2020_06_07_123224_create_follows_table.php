@@ -15,8 +15,16 @@ class CreateFollowsTable extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->integer('self_id');
-            $table->integer('follow_id');
+            $table->integer('self_id')->unsigned();
+            $table->foreign('self_id')
+            ->references('id')->on('user_infoes')
+            ->onDelete('cascade');
+            
+            $table->integer('follow_id')->unsigned();
+            $table->foreign('follow_id')
+            ->references('id')->on('user_infoes')
+            ->onDelete('cascade');
+            
             $table->boolean('mutual_flag');
             $table->timestamps();
         });
