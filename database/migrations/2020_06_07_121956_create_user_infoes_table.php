@@ -18,7 +18,7 @@ class CreateUserInfoesTable extends Migration
             $table->string('name');
             $table->string('icon_image');
             $table->string('description');
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
             ->references('id')->on('users')
             ->onDelete('cascade');
