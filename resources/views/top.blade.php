@@ -11,17 +11,21 @@
     <div class="container">
         <div>
             <br>
-            <img class="top-image" src="../img/photo.png" alt="#">
+            <img id="topImage" class="top-image" src="../img/photo.png" alt="#">
         </div>
     </div>
   
   <!-- Page Content -->
   　<section class="py-4">
-        <div class="container">
+        <div id="topContainer" class="container">
             <h2 class="font-weight-light text-center py-1">「タイトル」</h2>
             <p class="text-center py-2">このアプリは、プログラミング初心者のためのマッチングアプリです。</p>
-            <button type="button" class="btn btn-primary btn-lg btn-block py-2">ログイン</button>
-            <button type="button" class="btn btn-danger btn-lg btn-block">サインアップ</button>
+            <a class="btn btn-primary btn-block p-2" href="/login">
+                ログイン
+            </a>
+            <a class="btn btn-danger btn-block p-2" href="/register">
+                サインアップ
+            </a>
         </div>
     </section>
 

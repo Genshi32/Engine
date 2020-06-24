@@ -11,7 +11,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="form-group row">
                             <!-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> -->
                             <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>

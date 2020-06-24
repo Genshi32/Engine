@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return view('home');
-        $users = Auth::user(); //ログインユーザーの情報を$userで流す
-        return view('mypage', [
-            'users' => $users,
-        ]);
+        return view('home');
+        // $users = Auth::user();
+        // return view('/user_info/mypage', [
+        //     'users' => $users,
+        // ]);
     }
 }
