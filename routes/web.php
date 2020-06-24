@@ -18,9 +18,22 @@ Route::get('/', function () {
 });
 
 // MyPageを表示
-Route::get('/mypage', 'UserInfoController@mypage');
-Route::get('/edit', 'UserInfoController@edit');
+Route::get('/user_info/mypage', 'UserInfoController@mypage');
+// プロフィール作成画面に遷移
+Route::get('/user_info/create', 'UserInfoController@create');
+// プロフィール作成完了
+Route::post('/user_info/create_confirmed', 'UserInfoController@create_confirmed');
+// プロフィール編集画面に遷移
+Route::get('/user_info/edit', 'UserInfoController@edit');
+// 編集を完了し、更新
+Route::post('/user_info/update', 'UserInfoController@update');
+// 一覧画面に遷移
+Route::get('/user_info/list', 'UserInfoController@list');
+// ユーザーページに遷移
+Route::get('/user_info/userpage/{id}', 'UserInfoController@userpage');
 
 Auth::routes();
+// ログアウト
+Route::get("/logout", "Auth\LoginController@logout");
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

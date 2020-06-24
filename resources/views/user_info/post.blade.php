@@ -11,23 +11,6 @@
       <h1> マイページ編集 </h1>
       <form action="/user_info/update" enctype="multipart/form-data" method="post">
         @csrf
-        <!-- ID -->
-        <input type="hidden" name="id" value="{{ $user_info->id }}">
-        <!-- icon -->
-        <div class="form-group my-5">
-          <label for="user_icon_image">アイコン:</label>
-          <input type="file" name="image" class="form-control-file">
-        </div>
-        <!-- name -->
-        <div class="form-group my-5">
-          <label for="name">名前:</label>
-          <input type="text" id="name" name="name" class="form-control" value="{{ $user_info->name }}">
-        </div>
-        <!-- comment -->
-        <div class="form-group my-5">
-          <label for="descriptionTextarea">コメント:</label>
-          <textarea id="description" class="form-control" name="description">{{ $user_info->description }}</textarea>
-        </div>
         <!-- technologymaster -->
         <label class="my-3" for="technologyMastersName">学習言語:</label>
           <div class="row">
@@ -54,7 +37,7 @@
             @case(1)
               <div class="col-md-3">  
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="techs[]" value="{{ $technology_master->id }}" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" name="technology_masters" value="{{ $technology_master->id }}" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">{{ $technology_master->name }}</label>
                 </div>
               </div>
@@ -62,7 +45,7 @@
             @case(2)
               <div class="col-md-3">  
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="techs[]" value="{{ $technology_master->id }}" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" name="technology_masters" value="{{ $technology_master->id }}" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">{{ $technology_master->name }}</label>
                 </div>
               </div>
@@ -70,7 +53,7 @@
             @case(3)
               <div class="col-md-3">  
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="techs[]" value="{{ $technology_master->id }}" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" name="technology_masters" value="{{ $technology_master->id }}" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">{{ $technology_master->name }}</label>
                 </div>
               </div>
@@ -78,7 +61,7 @@
             @default
               <div class="col-md-3">  
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="techs[]" value="{{ $technology_master->id }}" id="defaultCheck1">
+                  <input class="form-check-input" type="checkbox" name="technology_masters" value="{{ $technology_master->id }}" id="defaultCheck1">
                   <label class="form-check-label" for="defaultCheck1">{{ $technology_master->name }}</label>
                 </div>
               </div>

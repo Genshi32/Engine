@@ -1,7 +1,7 @@
-.container {
+#topContainer {
     max-width: 520px;
 }
 
-.top-image {
+#topImage {
     max-width: 490px;
 }

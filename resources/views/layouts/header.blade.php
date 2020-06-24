@@ -7,17 +7,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <!-- <li class="nav-item active">
             <a class="nav-link" href="#">ホーム<span class="sr-only">(current)</span></a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="/user_info/list">一覧</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">一覧</a>
+            <a class="nav-link" href="/user_info/mypage">マイページ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">マイページ</a>
+            <a class="nav-link" href="{{ route('logout') }}">ログアウト</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ログアウト</a>
+            <form class="nav-link" href="/user_info/list" method="get">
+              @csrf
+              <input type="text" name="search">
+              <input type="submit" value="検索">
+            </form>
           </li>
         </ul>
     </div>

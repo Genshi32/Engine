@@ -8,11 +8,11 @@
     
 <body>
     <div class="container">
-      <h1> マイページ編集 </h1>
-      <form action="/user_info/update" enctype="multipart/form-data" method="post">
+      <h1> ユーザー情報作成 </h1>
+      <form action="/user_info/create_confirmed" enctype="multipart/form-data" method="post">
         @csrf
         <!-- ID -->
-        <input type="hidden" name="id" value="{{ $user_info->id }}">
+        <input type="hidden" name="id" value="{{ $user->id }}">
         <!-- icon -->
         <div class="form-group my-5">
           <label for="user_icon_image">アイコン:</label>
@@ -21,12 +21,12 @@
         <!-- name -->
         <div class="form-group my-5">
           <label for="name">名前:</label>
-          <input type="text" id="name" name="name" class="form-control" value="{{ $user_info->name }}">
+          <input type="text" id="name" name="name" class="form-control">
         </div>
         <!-- comment -->
         <div class="form-group my-5">
           <label for="descriptionTextarea">コメント:</label>
-          <textarea id="description" class="form-control" name="description">{{ $user_info->description }}</textarea>
+          <textarea type="description" id="description" class="form-control" name="description"></textarea>
         </div>
         <!-- technologymaster -->
         <label class="my-3" for="technologyMastersName">学習言語:</label>
@@ -44,9 +44,6 @@
               <label for="technologyMastersName">開発ツール</label>
             </div>
           </div>
-
-
-
           <!-- ※学習言語のソートができてない状態 -->
           <div class="row form-group">
           @foreach ($technology_masters as $technology_master)

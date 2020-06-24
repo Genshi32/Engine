@@ -34,9 +34,7 @@
                       </div>
                     </div>
                   </div>
-                  <a href="/user_info/edit">
-                    <button class="btn btn-primary">プロフィール設定</button>
-                  </a>
+
                   <div class="card-body border m-4">
                     <dt><u>学習内容</u></dt>
                     <ul class="list text-center">
@@ -66,29 +64,13 @@
     </div>
 
       <!-- フォローリスト -->
-    <div class="container mt-5 "><h5><mark>フォロー</mark></h5></div>
-    <div class="container border col-sm-9 col-md-7 col-lg-7 mx-auto">
-      <div class="d-flex justify-content-center">
-        @foreach ($follow_users as $follow_user)
-        <div class="p-2">
-          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
-          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
-        </div>
-        @endforeach
-      </div>
+    <div class="container mt-5 ">
+        <button type="button" class="btn btn-primary btn-lg btn-block">フォローする</button>
     </div>
 
     <!-- フォロワーリスト -->
-    <div class="container mt-5 "><h5><mark>フォロワー</mark></h5></div>
-    <div class="container border col-sm-9 col-md-7 col-lg-7 mx-auto">
-      <div class="d-flex justify-content-center">
-        @foreach ($follower_users as $follower_user)
-        <div class="p-2">
-          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
-          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
-        </div>
-        @endforeach
-      </div>
+    <div class="container mt-5 ">
+        <button type="button" class="btn btn-danger btn-lg btn-block">メッセージを送る</button>
     </div>
 
 @endsection
