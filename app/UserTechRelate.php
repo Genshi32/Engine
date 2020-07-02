@@ -10,4 +10,9 @@ class UserTechRelate extends Model
     {
         return $this->belongsTo('App\TechnologyMaster');
     }
+
+    public function UserInfo()
+    {
+        return $this->belongsTo('App\UserInfo');
+    }
 }

@@ -12,7 +12,11 @@
       <form action="/user_info/update" enctype="multipart/form-data" method="post">
         @csrf
         <!-- ID -->
-        <input type="hidden" name="id" value="{{ $user_info->id }}">
+        @if ($user->UserInfo != null)
+        <input type="hidden" name="id" value="{{ $user->UserInfo->id }}">
+        @else
+        <input type="hidden" name="id" value="{{ $user->id }}">
+        @endif
         <!-- icon -->
         <div class="form-group my-5">
           <label for="user_icon_image">アイコン:</label>
@@ -20,13 +24,23 @@
         </div>
         <!-- name -->
         <div class="form-group my-5">
+          @if ($user->UserInfo != null)
           <label for="name">名前:</label>
-          <input type="text" id="name" name="name" class="form-control" value="{{ $user_info->name }}">
+          <input type="text" id="name" name="name" class="form-control" value="{{ $user->UserInfo->name }}">
+          @else
+          <label for="name">名前:</label>
+          <input type="text" id="name" name="name" class="form-control" value="{{ $user->name }}">
+          @endif
         </div>
         <!-- comment -->
         <div class="form-group my-5">
+          @if ($user->UserInfo != null)
           <label for="descriptionTextarea">コメント:</label>
-          <textarea id="description" class="form-control" name="description">{{ $user_info->description }}</textarea>
+          <textarea id="description" class="form-control" name="description">{{ $user->UserInfo->description }}</textarea>
+          @else
+          <label for="descriptionTextarea">コメント:</label>
+          <textarea id="description" class="form-control" name="description">自己紹介文を入力してください</textarea>
+          @endif
         </div>
         <!-- technologymaster -->
         <label class="my-3" for="technologyMastersName">学習言語:</label>

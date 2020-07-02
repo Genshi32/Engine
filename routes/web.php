@@ -28,9 +28,11 @@ Route::get('/user_info/edit', 'UserInfoController@edit');
 // 編集を完了し、更新
 Route::post('/user_info/update', 'UserInfoController@update');
 // 一覧画面に遷移
-Route::get('/user_info/list', 'UserInfoController@list');
+Route::get('/user_info/list/{category?}', 'UserInfoController@list');
 // ユーザーページに遷移
 Route::get('/user_info/userpage/{id}', 'UserInfoController@userpage');
+// ユーザーをフォロー
+Route::get('/user_info/userpage/{request_user}/{user}', 'UserInfoController@follow');
 
 Auth::routes();
 // ログアウト

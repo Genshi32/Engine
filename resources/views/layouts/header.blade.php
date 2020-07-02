@@ -26,6 +26,15 @@
               <input type="submit" value="検索">
             </form>
           </li>
+          <li>
+            <ul>
+              <li class="nav-item">
+              @foreach ($technology_masters as $technology_master)
+                <a class="nav-link" href="/user_info/list/{{ $technology_master->id }}" method="get">{{ $technology_master->name }}</a>
+              @endforeach
+              </li>
+            </ul>
+          </li>
         </ul>
     </div>
 </nav>
