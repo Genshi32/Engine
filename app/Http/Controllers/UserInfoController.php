@@ -88,7 +88,10 @@ class UserInfoController extends Controller
         if($image !== null) {
         $path = Storage::disk('s3')->putFile('image', $image, 'public');
         // アップロードした画像のフルパスを取得
+<<<<<<< HEAD
         }
+=======
+>>>>>>> 76fd31307fdf3c5ff218ef842531d7c012717d1b
 
         if ($user_info) {
             if($image !== null) {
@@ -222,7 +225,12 @@ class UserInfoController extends Controller
             $search_follow->delete();
             $search_follower->update(['mutual_flag' => 0]);
         }
+<<<<<<< HEAD
 
         return redirect('/user_info/list');   
+=======
+        return redirect('/user_info/list');
+        
+>>>>>>> 76fd31307fdf3c5ff218ef842531d7c012717d1b
     }
 }
