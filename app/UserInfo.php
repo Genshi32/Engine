@@ -16,7 +16,8 @@ class UserInfo extends Model
 
     public function TechnologyMasters()
     {
-        return $this->hasManyThrough('App\TechnologyMaster', 'App\UserTechRelate');
+        // return $this->hasManyThrough('App\TechnologyMaster', 'App\UserTechRelate', );
+        return $this->hasManyThrough('App\TechnologyMaster', 'App\UserTechRelate', 'user_info_id', 'id', null, 'technology_master_id');
     }
 
     public function UserTechRelates()
