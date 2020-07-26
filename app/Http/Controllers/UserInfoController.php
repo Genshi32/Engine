@@ -65,48 +65,6 @@ class UserInfoController extends Controller
     }
 
 
-    // public function create(Request $request) {
-    //     if (Auth::check()) {
-    //         $user = Auth::user(); //ログインしているユーザー取得
-    //     } else {
-    //         return redirect('/login'); //ログインしていなかったら/loginへ遷移
-    //     }
-
-    //     $technology_masters = TechnologyMaster::all();
-
-    //     return view('user_info/create', [
-    //         'user' => $user,
-    //         'technology_masters' => $technology_masters,
-    //     ]);
-    // }
-
-
-    // public function create_confirmed (Request $request) {
-
-    //     $image = $request->file('image');
-    //     $path = Storage::disk('s3')->putFile('image', $image, 'public');
-
-    //     $user_info = new UserInfo;
-    //     $user_info->id = $request->id;
-    //     $user_info->name = $request->name;
-    //     $user_info->icon_image = Storage::disk('s3')->url($path);
-    //     $user_info->description = $request->description;
-    //     $user_info->user_id = $request->id;
-    //     $user_info->save();
-
-    //     $check_tech_list = $request->techs; // checkされた技術を取得
-    //     $save_list = []; // 複数レコードを一気に登録するために連想配列を作成する
-    //     foreach ($check_tech_list as $check_tech) {
-    //         $save_list["technology_master_id"] = $check_tech;
-    //         $save_list["user_info_id"] = $user_info->id;
-    //         UserTechRelate::insert($save_list);
-
-    //     }
-
-    //     return redirect('/user_info/mypage');
-    // }
-
-
     public function edit (Request $request) {
         if (Auth::check()) {
             $user = Auth::user();
@@ -114,35 +72,39 @@ class UserInfoController extends Controller
             return redirect('/login');
         }
 
-        // $user_info = $user->UserInfo;
         $technology_masters = TechnologyMaster::all();
 
         return view('user_info/edit', [
             'user' => $user,
-            // 'user_info' => $user_info,
             'technology_masters' => $technology_masters,
         ]);
     }
 
 
     public function update (Request $request) {
-        // user_infoテーブル更新
+        $user_info = UserInfo::find($request->id);
         $image = $request->file('image');
         // バケットの`myprefix`フォルダへアップロード
+        if($image !== null) {
         $path = Storage::disk('s3')->putFile('image', $image, 'public');
         // アップロードした画像のフルパスを取得
-        // $post->image_path = Storage::disk('s3')->url($path);
+        }
 
-        $user_info = UserInfo::find($request->id);
         if ($user_info) {
-            $user_info->icon_image = Storage::disk('s3')->url($path);
+            if($image !== null) {
+                $user_info->icon_image = Storage::disk('s3')->url($path);
+            }
             $user_info->name = $request->name;
             $user_info->description = $request->description;
             $user_info->save();
         } else {
             $user_info = new UserInfo;
             $user_info->id = $request->id;
-            $user_info->icon_image = Storage::disk('s3')->url($path);
+            if($image !== null) {
+                $user_info->icon_image = Storage::disk('s3')->url($path);
+            } else {
+                $user_info->icon_image = '';
+            }
             $user_info->name = $request->name;
             $user_info->description = $request->description;
             $user_info->user_id = $request->id;
@@ -179,8 +141,6 @@ class UserInfoController extends Controller
             return redirect('/login');
         }
 
-        // $user_infoes_list = UserInfo::with('TechnologyMasters')->paginate(3);
-
         $category_id = (int)$request->category;
         $query = UserInfo::query();
         if ($category_id !== 0) {
@@ -194,32 +154,9 @@ class UserInfoController extends Controller
         if (strlen($request->search) >= 1) {
             $query->where('name', $request->search);
         }
-        $user_infoes_list = $query->paginate(3);
+        $user_infoes_list = $query->paginate(6);
 
         return view('user_info.list',compact('user','category_id', 'user_infoes_list'));
-
-
-        // return view('items.list',compact('items','category_id','free'));
-
-
-
-        // $users_list = User::all(); // 全ユーザーの取得
-        // $user_tech_relates = UserTechRelate::all();
-        // dd($user_infoes_list);
-
-        // foreach ($user_infoes_list as $user_info_list) {
-        //     // dd($user_info_list);
-        //     $user_tech_relates = UserTechRelate::where('user_info_id', $user_info_list)->get(['technology_master_id'])->toArray(); //Followsテーブルの内、ログインしているユーザーのIDと一致するself_idを持つカラムを取得
-        // }
-        // dd($user_tech_relates);
-
-        // return view('user_info.list', [
-        //     'user' => $user,
-
-        //     // 'users_list' => $users_list,
-        //     'user_infoes_list' => $user_infoes_list,
-        //     // 'user_tech_relates' => $user_tech_relates,
-        // ]);
     }
 
 
@@ -275,24 +212,17 @@ class UserInfoController extends Controller
             $follow->save();
 
             // 相互フォローであればmutual_flagをtrueにする
-            if ($search_follow->exists() === true && $search_follower->exists() === true) {
+            if ($search_follower->exists() === true) {
                 $search_follow->update(['mutual_flag' => 1]);
                 $search_follower->update(['mutual_flag' => 1]);
             }
-            return redirect('/user_info/list');
-        }
 
-        
-        // 自分が相手をフォローしていたらフォローを外す
-        if ($search_follow->exists() === true) {
+        } else {
+            // 自分が相手をフォローしていたらフォローを外す
             $search_follow->delete();
             $search_follower->update(['mutual_flag' => 0]);
         }
-        return redirect('/user_info/list');
 
-
-
-
-        
+        return redirect('/user_info/list');   
     }
 }

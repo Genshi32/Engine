@@ -37,10 +37,9 @@
 
                   <div class="card-body border m-4">
                     <dt><u>学習内容</u></dt>
-                    <ul class="list text-center">
-                      <br>
+                    <ul class="list text-center px-0 my-0">
                       @foreach ($request_user_tech_relates as $request_user_tech_relate)
-                      <li class="list-item"><u>{{$request_user_tech_relate->TechnologyMaster->name}}</u></li>
+                      <li class="list-item mx-auto"><u>{{$request_user_tech_relate->TechnologyMaster->name}}</u></li>
                       @endforeach
                     </ul>
                   </div>

@@ -36,7 +36,7 @@
         <div class="form-group my-5">
           @if ($user->UserInfo != null)
           <label for="descriptionTextarea">コメント:</label>
-          <textarea id="description" class="form-control" name="description">{{ $user->UserInfo->description }}</textarea>
+          <textarea id="description" class="form-control" name="description" >{{ $user->UserInfo->description }}</textarea>
           @else
           <label for="descriptionTextarea">コメント:</label>
           <textarea id="description" class="form-control" name="description">自己紹介文を入力してください</textarea>

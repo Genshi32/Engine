@@ -1,23 +1,26 @@
 .list {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-  
-  .list-item {
+  height: 72px;
+  overflow: scroll;
+}
+
+.list-item {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    float: left;
     width: 50%;
   }
   
   #icon_image {
       border-radius: 50%;
-      width: 50%;
-      height: auto;
+      width: 150px;
+      height: 150px;
       margin:0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
+      object-fit: cover;
+  }
+
+  #topImageContainer {
+    text-align: center;
   }

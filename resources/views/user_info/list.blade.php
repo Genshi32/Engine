@@ -22,14 +22,15 @@
         <div class="card-body">
           <h4 class="card-name d-flex justify-content-center"><strong>{{ $user_info_list->name }}</strong></h4>
         </div>
-        <div class="card-body border m-4">
+        <div class="card-body tech-list border m-4">
           <dt><u>学習内容</u></dt>
-          <ul class="list text-center">
-            <br>
+          <div>
+          <ul class="list text-center px-0 my-0">
             @foreach ($user_info_list->TechnologyMasters as $user_info_list->TechnologyMaster)
-            <li class="list-item">{{ $user_info_list->TechnologyMaster->name }}</li>
+            <li class="list-item mx-auto"><u>{{ $user_info_list->TechnologyMaster->name }}</u></li>
             @endforeach
           </ul>
+          </div>
         </div>
       </div>
     </div>

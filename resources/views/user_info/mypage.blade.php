@@ -12,7 +12,7 @@
         <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
             <div class="card-deck">
                 <div class="card">
-                  @if ($user_info == null)
+                  @if ($user_info == null || $user_info->icon_image == '') <!-- user_infoが未設定またはuser_info設定時に画像を設定しなかった時 --> 
                   <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
                   @else
                   <img class="card-img-top img-thumbnail" id="icon_image" src={{ $user_info->icon_image }}>
@@ -47,13 +47,12 @@
                   <a href="/user_info/edit">
                     <button class="btn btn-primary">プロフィール設定</button>
                   </a>
-                  <div class="card-body border m-4">
+                  <div class="card-body tech-list border m-4">
                     <dt><u>学習内容</u></dt>
-                    <ul class="list text-center">
-                      <br>
+                    <ul class="list text-center px-0 my-0">
                       @if ($user_tech_relates != null)
                       @foreach ($user_tech_relates as $user_tech_relate)
-                        <li class="list-item"><u>{{$user_tech_relate->TechnologyMaster->name}}</u></li>
+                        <li class="list-item mx-auto"><u>{{$user_tech_relate->TechnologyMaster->name}}</u></li>
                       @endforeach
                       @else
                         <p><u>※学習言語を<br>登録してください</u><p>
