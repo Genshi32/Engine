@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', 'TOP')
+@section('title', 'マイページ編集')
 @include('layouts.head')
 @include('layouts.header')
 
@@ -101,7 +101,7 @@
           @endforeach
           </div>
         <br>
-        <input type="submit" class="btn btn-primary btn-lg btn-block" value="保存">
+        <input type="submit" class="btn btn-lg btn-outline-primary" value="保存">
       </form>
     </div>
 

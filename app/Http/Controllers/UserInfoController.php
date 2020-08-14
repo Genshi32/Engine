@@ -171,6 +171,9 @@ class UserInfoController extends Controller
         $request_user_info = UserInfo::find($request->id);
         $request_user_tech_relates = $request_user_info->UserTechRelates; //ログインしているユーザーと学習している言語の紐付け
 
+        $user_id = (int)$user->id; // ログインユーザーID取得
+        $request_user_id = (int)$request->id; // フォロー対象ユーザーID取得
+        $search_follow = Follow::where('self_id', $user_id)->where('follow_id', $request_user_id); // 自分が相手をフォローしていればレコードを取得
 
         $follow_ids = Follow::where('self_id', $request_user_info->id)->get(['follow_id'])->toArray(); //Followsテーブルの内、ログインしているユーザーのIDと一致するself_idを持つカラムを取得
         $id_list = [];
@@ -189,11 +192,14 @@ class UserInfoController extends Controller
 
         return view('/user_info/userpage', [
             'user' => $user,
+            'user_id' => $user_id,
             'request_user' => $request_user,
+            'request_user_id' => $request_user_id,
             'request_user_info' => $request_user_info,
             'request_user_tech_relates'=> $request_user_tech_relates,
             'follow_users' => $follow_users,
             'follower_users' => $follower_users,
+            'search_follow' => $search_follow,
         ]);
     }
 

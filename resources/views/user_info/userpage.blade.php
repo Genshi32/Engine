@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', 'TOP')
+@section('title', 'ユーザーページ')
 @include('layouts.head')
 @include('layouts.header')
 
@@ -8,6 +8,7 @@
     
       <!-- プロフィール -->
   <div class="container">
+  <h2 class="my-4">ユーザーページ</h1>
       <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
             <div class="card-deck">
@@ -63,16 +64,21 @@
     </div>
 
       <!-- フォローリスト -->
-    <div class="container mt-5 ">
-      <a href="/user_info/userpage/{{ $request_user->id }}/{{ $user->id }}">
-        <button type="button" class="btn btn-primary btn-lg btn-block">フォローする</button>
+    <div class="container mt-5 text-center">
+      @if ($search_follow->exists() === false)
+      <a href="/user_info/userpage/{{ $request_user->id }}/{{ $user->id }}" class="mx-auto">
+        <button type="button" class="btn btn-outline-primary btn-lg">　フォローする　</button>
+      </a>
+      @else
+      <a href="/user_info/userpage/{{ $request_user->id }}/{{ $user->id }}" class="mx-auto">
+        <button type="button" class="btn btn-outline-danger btn-lg">　フォロー解除　</button>
+      </a>
+      @endif
+      <a href="#" class="mx-auto">
+        <button type="button" class="btn btn-outline-success btn-lg">メッセージを送る</button>
       </a>
     </div>
 
-    <!-- フォロワーリスト -->
-    <div class="container mt-5 ">
-        <button type="button" class="btn btn-danger btn-lg btn-block">メッセージを送る</button>
-    </div>
 
 @endsection
 

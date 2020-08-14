@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', 'TOP')
+@section('title', 'マイページ')
 @include('layouts.head')
 @include('layouts.header')
 
@@ -8,16 +8,18 @@
     
       <!-- プロフィール -->
   <div class="container">
+    <h2 class="my-4">マイページ</h1>
       <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
             <div class="card-deck">
                 <div class="card">
-                  @if ($user_info == null || $user_info->icon_image == '') <!-- user_infoが未設定またはuser_info設定時に画像を設定しなかった時 --> 
-                  <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
-                  @else
-                  <img class="card-img-top img-thumbnail" id="icon_image" src={{ $user_info->icon_image }}>
-                  @endif
                   <div class="card-body">
+                    @if ($user_info == null || $user_info->icon_image == '') <!-- user_infoが未設定またはuser_info設定時に画像を設定しなかった時 --> 
+                    <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
+                    @else
+                    <img class="card-img-top img-thumbnail" id="icon_image" src={{ $user_info->icon_image }}>
+                    @endif
+                    <br>
                     @if ($user_info == null)
                     <h4 class="card-name d-flex justify-content-center"><strong>{{ $user->name }}</strong></h4>
                     @else
@@ -44,9 +46,6 @@
                       </div>
                     </div>
                   </div>
-                  <a href="/user_info/edit">
-                    <button class="btn btn-primary">プロフィール設定</button>
-                  </a>
                   <div class="card-body tech-list border m-4">
                     <dt><u>学習内容</u></dt>
                     <ul class="list text-center px-0 my-0">
@@ -62,16 +61,19 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <p class="card-title">自己紹介</p>
+                    <h3 class="card-title">自己紹介</h3>
                     <br>
                     <br>
                     <br>
                     @if ($user_info == null)
-                    <h5 class="card-text"><u>※自己紹介文を<br>編集してください</u></h5>
+                    <h4 class="card-text"><u>※自己紹介文を<br>編集してください</u></h5>
                     @else
-                    <h5 class="card-text">{{ $user_info->description }}</h5>
+                    <h4 class="card-text">{{ $user_info->description }}</h5>
                     @endif
                   </div>
+                  <a href="/user_info/edit" class="text-center m-3">
+                    <button class="btn btn-outline-info">プロフィール設定</button>
+                  </a>
                 </div>
             </div>
         </div>

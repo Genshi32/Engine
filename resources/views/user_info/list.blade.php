@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', 'TOP')
+@section('title', '一覧')
 @include('layouts.head')
 @include('layouts.header')
 
