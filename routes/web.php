@@ -38,4 +38,6 @@ Auth::routes();
 // ログアウト
 Route::get("/logout", "Auth\LoginController@logout");
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/chat/{user_id?}', 'UserInfoController@chat');
+Route::get('ajax/chat', 'Ajax\ChatController@index');
+Route::post('ajax/chat', 'Ajax\ChatController@send');
