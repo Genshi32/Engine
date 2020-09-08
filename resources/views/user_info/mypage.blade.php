@@ -107,8 +107,8 @@
         @if ($follower_users != null)
         @foreach ($follower_users as $follower_user)
         <div class="p-2">
-          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
-          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
+          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
+          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follower_user->name }}</h5>
         </div>
         @endforeach
         @else
