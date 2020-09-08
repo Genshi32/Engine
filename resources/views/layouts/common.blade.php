@@ -4,6 +4,7 @@
     @yield('head')
     </head>
     <body>
+        
         @yield('header')
             <div class="contents">
                 <div class="main">
@@ -11,5 +12,6 @@
                 </div>
             </div>
         @yield('footer')
+        
     </body>
 </html>

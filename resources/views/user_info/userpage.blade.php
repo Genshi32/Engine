@@ -74,7 +74,7 @@
         <button type="button" class="btn btn-outline-danger btn-lg">　フォロー解除　</button>
       </a>
       @endif
-      <a href="#" class="mx-auto">
+      <a href="/chat/{{ $request_user_id }}" class="mx-auto">
         <button type="button" class="btn btn-outline-success btn-lg">メッセージを送る</button>
       </a>
     </div>
