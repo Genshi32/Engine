@@ -4,6 +4,7 @@ var chat = new Vue({
         message: "",
         messages: [],
         user_id: location.pathname.match(/[^\/]+$/)[0],
+        // ユーザーidの末尾をとってる
         self_user_info: null,
         partner_user_info: null,
         icon_image: {},

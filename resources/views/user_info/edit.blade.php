@@ -52,7 +52,7 @@
               <label for="technologyMastersName">フロントエンド</label>
             </div>
             <div class="col-md-3">
-              <label for="technologyMastersName">インフラ</label>
+              <label for="technologyMastersName">フレームワーク</label>
             </div>
             <div class="col-md-3">
               <label for="technologyMastersName">開発ツール</label>
