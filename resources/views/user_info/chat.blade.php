@@ -43,4 +43,5 @@
 <!-- axios -->
 <!-- <script src="https://unpkg.com/axios/dist/axios.min.js" crossorigin="anonymous"></script>    -->
 @endsection
+<script src="{{ mix('js/app.js') }}"></script>
 @include('layouts.footer')
