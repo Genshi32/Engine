@@ -86,10 +86,14 @@
       <div class="d-flex justify-content-center">
         @if ($follow_users != null)
         @foreach ($follow_users as $follow_user)
-        <div class="p-2">
+        <!-- <div class="p-2">
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
           <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
-        </div>
+        </div> -->
+        <a href="/user_info/userpage/{{ $follow_user->id }}">
+          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
+          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
+        </a>
         @endforeach
         @else
         <div class="p-2">
@@ -106,10 +110,14 @@
       <div class="d-flex justify-content-center">
         @if ($follower_users != null)
         @foreach ($follower_users as $follower_user)
-        <div class="p-2">
+        <!-- <div class="p-2">
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
           <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follower_user->name }}</h5>
-        </div>
+        </div> -->
+        <a href="/user_info/userpage/{{ $follower_user->id }}">
+          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
+          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follower_user->name }}</h5>
+        </a>
         @endforeach
         @else
         <div class="p-2">

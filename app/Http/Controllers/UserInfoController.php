@@ -155,7 +155,7 @@ class UserInfoController extends Controller
         if (strlen($request->search) >= 1) {
             $query->where('name', $request->search);
         }
-        $user_infoes_list = $query->paginate(6);
+        $user_infoes_list = $query->whereNotIn('id', [$user->id])->paginate(6); //自分以外のユーザーを6名ずつ表示
 
         return view('user_info.list',compact('user','category_id', 'user_infoes_list'));
     }
