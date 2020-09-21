@@ -30,6 +30,13 @@ class UserInfoController extends Controller
         if ($user_info != null) {
             $user_tech_relates = $user_info->UserTechRelates; //ログインしているユーザーと学習している言語の紐付け
         } else {
+            $user_info = new UserInfo;
+            $user_info->name = $user->name;
+            $user_info->description = "自己紹介文を編集してください";
+            $user_info->icon_image = '';
+            $user_info->user_id = $user->id;
+            $user_info->save();
+
             $user_tech_relates = null;
         }
 
