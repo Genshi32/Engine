@@ -16,7 +16,11 @@
       <div class="card">
         <div class="card-body">
           <a href="/user_info/userpage/{{ $user_info_list->id }}">
+          @if($user_info_list->icon_image != null)
             <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $user_info_list->icon_image }}">
+          @else
+            <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
+          @endif
           </a>
         </div>
         <div class="card-body">

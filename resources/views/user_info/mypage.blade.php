@@ -65,7 +65,7 @@
                     <br>
                     <br>
                     <br>
-                    @if ($user_info == null)
+                    @if ($user_info->description == null)
                     <h4 class="card-text"><u>※自己紹介文を<br>編集してください</u></h5>
                     @else
                     <h4 class="card-text">{{ $user_info->description }}</h5>
@@ -84,7 +84,7 @@
     <div class="container mt-5 "><h5><mark>フォロー</mark></h5></div>
     <div class="container border col-sm-9 col-md-7 col-lg-7 mx-auto">
       <div class="d-flex justify-content-center">
-        @if ($follow_users != null)
+        @if ($follow_users->count() !== 0)
         @foreach ($follow_users as $follow_user)
         <!-- <div class="p-2">
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
@@ -99,6 +99,7 @@
         <div class="p-2">
           <br>
           <br>
+          <br>
         </div>
         @endif
       </div>
@@ -108,7 +109,7 @@
     <div class="container mt-5 "><h5><mark>フォロワー</mark></h5></div>
     <div class="container border col-sm-9 col-md-7 col-lg-7 mx-auto">
       <div class="d-flex justify-content-center">
-        @if ($follower_users != null)
+        @if ($follower_users->count() !== 0)
         @foreach ($follower_users as $follower_user)
         <!-- <div class="p-2">
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
@@ -121,6 +122,7 @@
         @endforeach
         @else
         <div class="p-2">
+          <br>
           <br>
           <br>
         </div>

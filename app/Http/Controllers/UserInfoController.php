@@ -32,8 +32,6 @@ class UserInfoController extends Controller
         } else {
             $user_info = new UserInfo;
             $user_info->name = $user->name;
-            $user_info->description = "自己紹介文を編集してください";
-            $user_info->icon_image = '';
             $user_info->user_id = $user->id;
             $user_info->save();
 
@@ -129,12 +127,14 @@ class UserInfoController extends Controller
         $save_list = []; // 複数レコードを一気に登録するために連想配列を作成する
         $data_list = [];
 
-        foreach ($check_tech_list as $check_tech) {
-            $save_list["technology_master_id"] = (int)$check_tech;
-            $save_list["user_info_id"] = $user_info->id;
-            $data_list[] = $save_list;
+        if ($check_tech_list) {
+            foreach ($check_tech_list as $check_tech) {
+                $save_list["technology_master_id"] = (int)$check_tech;
+                $save_list["user_info_id"] = $user_info->id;
+                $data_list[] = $save_list;
+            }
+            UserTechRelate::insert($data_list); // 作成した連想配列をinsert関数を使用し一括作成する
         }
-        UserTechRelate::insert($data_list); // 作成した連想配列をinsert関数を使用し一括作成する
 
         return redirect('/user_info/mypage');
     }

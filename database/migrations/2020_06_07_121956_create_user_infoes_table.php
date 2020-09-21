@@ -16,8 +16,8 @@ class CreateUserInfoesTable extends Migration
         Schema::create('user_infoes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('icon_image');
-            $table->string('description');
+            $table->string('icon_image')->nullable();
+            $table->string('description')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
             ->references('id')->on('users')
