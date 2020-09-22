@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{ route('logout') }}">ログアウト</a>
           </li>
           <li class="nav-item">
-            <form class="nav-link " href="/user_info/list" method="get">
+            <form class="nav-link" action="/user_info/list" method="get">
               @csrf
               <input type="text" name="search">
               <input type="submit" value="検索">

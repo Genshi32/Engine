@@ -28,6 +28,7 @@ Route::get('/user_info/edit', 'UserInfoController@edit');
 // 編集を完了し、更新
 Route::post('/user_info/update', 'UserInfoController@update');
 // 一覧画面に遷移
+Route::get('/user_info/list', 'UserInfoController@list');
 Route::get('/user_info/list/{category?}', 'UserInfoController@list');
 // ユーザーページに遷移
 Route::get('/user_info/userpage/{id}', 'UserInfoController@userpage');
@@ -37,7 +38,7 @@ Route::get('/user_info/userpage/{request_user}/{user}', 'UserInfoController@foll
 Auth::routes();
 // ログアウト
 Route::get("/logout", "Auth\LoginController@logout");
-
+// チャット機能
 Route::get('/chat/{user_id?}', 'UserInfoController@chat');
 Route::get('ajax/chat', 'Ajax\ChatController@index');
 Route::post('ajax/chat', 'Ajax\ChatController@send');

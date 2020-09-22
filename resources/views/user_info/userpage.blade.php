@@ -14,7 +14,7 @@
             <div class="card-deck">
                 <div class="card">
                   @if ($request_user_info->icon_image == null)
-                  <img class="card-img-top img-thumbnail" id="icon_image" src="/public/images/blank.png">
+                  <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
                   @else
                   <img class="card-img-top img-thumbnail" id="icon_image" src={{ $request_user_info->icon_image }}>
                   @endif

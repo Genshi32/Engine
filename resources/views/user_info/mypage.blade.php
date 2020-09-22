@@ -86,12 +86,12 @@
       <div class="d-flex justify-content-center">
         @if ($follow_users->count() !== 0)
         @foreach ($follow_users as $follow_user)
-        <!-- <div class="p-2">
-          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
-          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
-        </div> -->
         <a href="/user_info/userpage/{{ $follow_user->id }}">
+          @if($follow_user->icon_image)
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follow_user->icon_image }}">
+          @else
+          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
+          @endif
           <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follow_user->name }}</h5>
         </a>
         @endforeach
@@ -111,12 +111,12 @@
       <div class="d-flex justify-content-center">
         @if ($follower_users->count() !== 0)
         @foreach ($follower_users as $follower_user)
-        <!-- <div class="p-2">
-          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
-          <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follower_user->name }}</h5>
-        </div> -->
         <a href="/user_info/userpage/{{ $follower_user->id }}">
+          @if($follower_user->icon_image)
           <img class="card-img-top img-thumbnail" id="icon_image" src="{{ $follower_user->icon_image }}">
+          @else
+          <img class="card-img-top img-thumbnail" id="icon_image" src="{{ asset('/images/blank.png') }}">
+          @endif
           <h5 class="card-name" style="display: flex; justify-content: center; align-items: center;">{{ $follower_user->name }}</h5>
         </a>
         @endforeach

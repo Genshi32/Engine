@@ -242,6 +242,19 @@ class UserInfoController extends Controller
 
     public function chat(Request $request) 
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            return redirect("/login");
+        }
+        $self_user_info = $user->UserInfo;
+        $partner_user_info = UserInfo::where("user_id", $request->user_id)->first();
+        $chat_room = ChatRoom::whereJsonContains("user_info_json",[$self_user_info->id, $partner_user_info->id])->first();
+        if (is_null($chat_room)) {
+            $chat_room = new ChatRoom;
+            $chat_room->user_info_json = "[$self_user_info->id, $partner_user_info->id]";
+            $chat_room->save();
+        }
 
         return view("user_info.chat");
     }
