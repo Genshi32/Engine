@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('top');
+});
+
 // MyPageを表示
 Route::get('/user_info/mypage', 'UserInfoController@mypage');
 // プロフィール作成画面に遷移
