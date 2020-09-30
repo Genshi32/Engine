@@ -10,7 +10,12 @@
   <div class="row">
     <div id="topImageContainer" class="col-xl text-center float-left">
         <br>
+        @if(app('env')=='local')
         <img id="topImage" class="top-image img-fluid" src="{{ asset('images/enjin_people.png') }}" alt="#">
+        @endif
+        @if(app('env')=='production')
+        <img id="topImage" class="top-image img-fluid" src="{{ secure_asset('images/enjin_people.png') }}" alt="#">
+        @endif
     </div>
     <div id="topContainer" class="col-xl float-right">
         <div class="jumbotron bg-transparent">
