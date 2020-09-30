@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if (env('APP_ENV') === 'production') {
+        URL::forceScheme('https');
+    }
     return view('top');
 });
 
